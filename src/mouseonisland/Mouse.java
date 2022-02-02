@@ -1,6 +1,7 @@
 package mouseonisland;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static mouseonisland.Island.myIsland;
 
@@ -27,13 +28,16 @@ public class Mouse {
     public void spawnMouse() {
         moves = 100;
         generateRandomCoordinate();
-        while (myIsland[x][y] == 0 || myIsland[x][y] == 2) {generateRandomCoordinate();}
+        while (island[x][y] == 0 || island[x][y] == 2) {generateRandomCoordinate();}
 
     }
 
     public void generateRandomCoordinate(){
-        x = (int)(Math.random() * ((Island.col - 0) + 1)); // creates random int [0, row] for x-coordinate
-        y = (int)(Math.random() * ((Island.row - 0) + 1)); // creates random int [0, col] for y-coordinate
+        //x = (int)(Math.random() * ((Island.col - 0) + 1)); // creates random int [0, row] for x-coordinate
+        //y = (int)(Math.random() * ((Island.row - 0) + 1)); // creates random int [0, col] for y-coordinate
+        x = 5;
+        y = 5;
+
 
     }
 
@@ -48,11 +52,11 @@ public class Mouse {
     */
 
     public int inquireStatus() {
-        if (moves == 0) {return 2;}
-        if (island[x][y] == 0) {return 0;}
-        // if (myIsland[x][y] == 1) {return 100;}
-        if (island[x][y] == 2) {return 10;}
-        return 1;
+        if (moves == 0) {return 2;}                 // 2 = starved
+        if (island[x][y] == 0) {return 0;}          // 0 = drowned
+        // if (myIsland[x][y] == 1) {return 100;}   // 1 = normal
+        if (island[x][y] == 2) {return 10;}         // 10 = escaped
+        return -1;                                  // -1 = error mode
 
     }
 

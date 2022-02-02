@@ -6,13 +6,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class RunMouse {
 
     public static void main(String[] args) throws IOException {
 
         int starved = 0, drowned = 0, escaped = 0;
-        double runtimes = 100000.0;
+        double runtimes = 10000.0;
 
         for (int i = 0; i < runtimes; i++) {
             Mouse mouse = new Mouse();
@@ -38,7 +39,7 @@ public class RunMouse {
 
         // Cleanup and print code below
         DecimalFormat formatPercentage = new DecimalFormat("#.00");
-
+        System.out.println("Ran the simulation " + (int) runtimes + " times. Below are the results:");
         System.out.println("Escaped: " + escaped + " times, " + (formatPercentage.format((escaped/runtimes)*100)) + "% of the time");
         System.out.println("Starved: " + starved + " times, " + (formatPercentage.format((starved/runtimes)*100)) + "% of the time");
         System.out.println("Drowned: " + drowned + " times, " + (formatPercentage.format((drowned/runtimes)*100)) + "% of the time");

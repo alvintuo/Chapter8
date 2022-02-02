@@ -10,6 +10,7 @@ public class Island {
 
     public Island() {}
 
+    //static int row = 20, col = 20;
     static int[][] myIsland = {
             {0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
@@ -63,7 +64,6 @@ public class Island {
             j++;
         }
         reader.close();
-        System.out.println(Arrays.deepToString(island));
         return island;
 
     }
