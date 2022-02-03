@@ -1,28 +1,17 @@
 package mouseonisland;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.ThreadLocalRandom;
-
-import static mouseonisland.Island.myIsland;
 
 public class Mouse {
 
-    int moves;
+    static int moves;
     static int x, y;
 
-    int[][] island;
+    static int[][] island;
 
     public Mouse() throws IOException {
-        generateIsland();
+        island = Island.importIsland(new File("/Users/alvintuo/Desktop/apcs/Chapter 8/src/mouseonisland/sampleIsland.txt"));
         spawnMouse();
-    }
-
-    public void generateIsland() throws IOException {
-        File islandMap = new File("/Users/alvintuo/Desktop/apcs/Chapter 8/src/mouseonisland/testIsland.txt");
-        // Below is the code to switch to file reader
-        island = Island.importIsland(islandMap);
-        // Below is the code to switch to the default map
-        // island = Island.myIsland;
     }
 
     public void spawnMouse() {
@@ -32,24 +21,11 @@ public class Mouse {
 
     }
 
-    public void generateRandomCoordinate(){
-        //x = (int)(Math.random() * ((Island.col - 0) + 1)); // creates random int [0, row] for x-coordinate
-        //y = (int)(Math.random() * ((Island.row - 0) + 1)); // creates random int [0, col] for y-coordinate
-        x = 5;
-        y = 5;
-
+    public static void generateRandomCoordinate(){
+        x = (int)(Math.random() * ((Island.row - 1) + 1)); // creates random int [0, row] for x-coordinate
+        y = (int)(Math.random() * ((Island.col - 1) + 1)); // creates random int [0, col] for y-coordinate
 
     }
-
-    /*
-    public boolean isAlive() {
-        if (island[x][y] == 0) {return false;}
-        if (moves > 0) {return false;}
-        else {
-            return true;
-        }
-    }
-    */
 
     public int inquireStatus() {
         if (moves == 0) {return 2;}                 // 2 = starved

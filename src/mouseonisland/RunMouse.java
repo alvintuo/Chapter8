@@ -1,12 +1,6 @@
 package mouseonisland;
-
-import static mouseonisland.Mouse.x;
-import static mouseonisland.Mouse.y;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.Scanner;
 
 public class RunMouse {
 
@@ -46,7 +40,6 @@ public class RunMouse {
 
 
         //DEBUG MODE
-
         /*
         Mouse mouse = new Mouse();
         mouse.spawnMouse();
