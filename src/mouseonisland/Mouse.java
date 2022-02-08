@@ -1,17 +1,34 @@
 package mouseonisland;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Mouse {
 
     static int moves;
-    static int x, y;
+    static int row, col, x, y;
 
     static int[][] island;
 
     public Mouse() throws IOException {
-        island = Island.importIsland(new File("/Users/alvintuo/Desktop/apcs/Chapter 8/src/mouseonisland/sampleIsland.txt"));
+        island = importIsland(new File("/Users/alvintuo/Desktop/apcs/Chapter 8/src/mouseonisland/sampleIsland.txt"));
         spawnMouse();
+    }
+
+    public static int[][] importIsland(File islandFile) throws IOException {
+        Scanner importer = new Scanner(islandFile);
+        int rows = importer.nextInt();
+        row = rows;
+        int cols = importer.nextInt();
+        col = cols;
+        int [][] island = new int [rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                island[i][j] = Integer.parseInt(importer.next());
+            }
+        }
+        importer.close();
+        return island;
     }
 
     public void spawnMouse() {
@@ -21,9 +38,9 @@ public class Mouse {
 
     }
 
-    public static void generateRandomCoordinate(){
-        x = (int)(Math.random() * ((Island.row - 1) + 1)); // creates random int [0, row] for x-coordinate
-        y = (int)(Math.random() * ((Island.col - 1) + 1)); // creates random int [0, col] for y-coordinate
+    public void generateRandomCoordinate(){
+        x = (int)(Math.random() * ((row - 1) + 1)); // creates random int [0, row] for x-coordinate
+        y = (int)(Math.random() * ((col - 1) + 1)); // creates random int [0, col] for y-coordinate
 
     }
 
