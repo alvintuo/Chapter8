@@ -11,7 +11,7 @@ public class Mouse {
     static int[][] island;
 
     public Mouse() throws IOException {
-        island = importIsland(new File("/Users/alvintuo/Desktop/apcs/Chapter 8/src/mouseonisland/sampleIsland.txt"));
+        island = importIsland(new File("/Users/alvintuo/Desktop/apcs/Chapter 8/src/mouseonisland/Island.txt"));
         spawnMouse();
     }
 
@@ -44,7 +44,7 @@ public class Mouse {
 
     }
 
-    public int inquireStatus() {
+    public int status() {
         if (moves == 0) {return 2;}                 // 2 = starved
         if (island[x][y] == 0) {return 0;}          // 0 = drowned
         // if (myIsland[x][y] == 1) {return 100;}   // 1 = normal
